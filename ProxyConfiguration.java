@@ -1,0 +1,41 @@
+package com.ussveritas.artemis.proxy.config;
+
+public record ProxyConfiguration(
+    String upstreamHost,
+    int upstreamPort,
+    int proxyListenPort,
+    int targetShip,
+    boolean engineeringEnabled,
+    boolean weaponsEnabled,
+    boolean commsEnabled,
+    String jsonOutputFile,
+    int udpPort,
+    int webPort
+) {
+    public ProxyConfiguration {
+        if (targetShip < 0 || targetShip > 7) {
+            throw new IllegalArgumentException("Target ship must be 0-7");
+        }
+        if (proxyListenPort < 1 || proxyListenPort > 65535) {
+            throw new IllegalArgumentException("Invalid proxy port");
+        }
+        if (upstreamPort < 1 || upstreamPort > 65535) {
+            throw new IllegalArgumentException("Invalid upstream port");
+        }
+    }
+    
+    public static ProxyConfiguration createDefault() {
+        return new ProxyConfiguration(
+            "192.168.1.209",
+            2010,
+            2011,
+            0,
+            true,
+            true,
+            true,
+            "artemis_proxy_status.json",
+            50200,
+            81
+        );
+    }
+}

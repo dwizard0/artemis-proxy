@@ -1,0 +1,2 @@
+package com.ussveritas.artemis.proxy.model;
+public record ShipSnapshot(String name,Float hull,ShieldData shields,WeaponData weapons,SystemPowerData systems){public static ShipSnapshot createEmpty(){return new ShipSnapshot(null,null,null,null,null);}}

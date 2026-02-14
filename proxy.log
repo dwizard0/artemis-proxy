@@ -1,0 +1,131 @@
+21:44:31.785 [main] INFO  c.u.a.proxy.config.ConfigFileReader - Added UDP target: 192.168.1.209
+21:44:31.789 [main] INFO  c.u.a.proxy.config.ConfigFileReader - Added UDP target: 192.168.1.117
+21:44:31.789 [main] INFO  c.u.a.proxy.config.ConfigFileReader - Added UDP target: 10.10.10.1
+21:44:31.792 [main] INFO  c.u.a.proxy.ArtemisProxyService - Starting Artemis Proxy Service (IAN-based)...
+21:44:31.796 [main] INFO  c.u.a.proxy.proxy.IanProxyServer - IAN Proxy server listening on port 2010
+21:44:31.814 [main] INFO  c.u.a.proxy.web.ConfigWebServer - Web config server started on port 81
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - =================================================
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - Artemis Proxy Service started successfully
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - =================================================
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - Mode: IAN Traffic Observer (no console blocking)
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - Proxy listening on port: 2010
+21:44:31.816 [main] INFO  c.u.a.proxy.ArtemisProxyService - Upstream server: 192.168.1.209:2010
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - Target ship: 0
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - UDP publishing to: localhost:50200
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - JSON output file: artemis_proxy_status.json
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - Web config: http://localhost:81
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - =================================================
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - IMPORTANT: Players connect to THIS proxy, not directly to Artemis
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - Client connection: <proxy-host>:2010
+21:44:31.817 [main] INFO  c.u.a.proxy.ArtemisProxyService - =================================================
+21:45:04.155 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.209:56496
+21:45:04.157 [pool-1-thread-1] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connected to upstream 192.168.1.209:2010
+21:45:04.184 [pool-1-thread-1] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connection established
+00:59:00.414 [Thread-4] INFO  c.u.a.proxy.proxy.IanProxyConnection - Disconnected: REMOTE_DISCONNECT
+00:59:00.499 [Thread-7] INFO  c.u.a.proxy.proxy.IanProxyConnection - Disconnected: LOCAL_DISCONNECT
+01:03:23.673 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.209:51740
+01:03:23.674 [pool-1-thread-2] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connected to upstream 192.168.1.209:2010
+01:03:23.680 [pool-1-thread-2] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connection established
+01:04:27.238 [Thread-10] INFO  c.u.a.proxy.proxy.IanProxyConnection - Disconnected: REMOTE_DISCONNECT
+01:04:27.243 [Thread-13] INFO  c.u.a.proxy.proxy.IanProxyConnection - Disconnected: LOCAL_DISCONNECT
+01:28:24.059 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /77.90.185.18:65354
+01:30:40.261 [pool-1-thread-3] ERROR c.u.a.proxy.proxy.IanProxyConnection - Proxy connection error
+java.net.ConnectException: Connection timed out
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:601)
+	at java.base/sun.nio.ch.Net.connect(Net.java:590)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyConnection.start(IanProxyConnection.java:38)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyServer.lambda$acceptLoop$0(IanProxyServer.java:82)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+04:30:36.601 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /77.90.185.18:63830
+04:32:52.483 [pool-1-thread-4] ERROR c.u.a.proxy.proxy.IanProxyConnection - Proxy connection error
+java.net.ConnectException: Connection timed out
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:601)
+	at java.base/sun.nio.ch.Net.connect(Net.java:590)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyConnection.start(IanProxyConnection.java:38)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyServer.lambda$acceptLoop$0(IanProxyServer.java:82)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+13:24:11.953 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.236:52152
+13:26:14.026 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.236:52177
+13:26:24.128 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.236:52181
+13:26:26.819 [pool-1-thread-5] ERROR c.u.a.proxy.proxy.IanProxyConnection - Proxy connection error
+java.net.ConnectException: Connection timed out
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:601)
+	at java.base/sun.nio.ch.Net.connect(Net.java:590)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyConnection.start(IanProxyConnection.java:38)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyServer.lambda$acceptLoop$0(IanProxyServer.java:82)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+13:28:29.699 [pool-1-thread-6] ERROR c.u.a.proxy.proxy.IanProxyConnection - Proxy connection error
+java.net.ConnectException: Connection timed out
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:601)
+	at java.base/sun.nio.ch.Net.connect(Net.java:590)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyConnection.start(IanProxyConnection.java:38)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyServer.lambda$acceptLoop$0(IanProxyServer.java:82)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+13:28:37.891 [pool-1-thread-7] ERROR c.u.a.proxy.proxy.IanProxyConnection - Proxy connection error
+java.net.ConnectException: Connection timed out
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:601)
+	at java.base/sun.nio.ch.Net.connect(Net.java:590)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:583)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/java.net.Socket.connect(Socket.java:686)
+	at java.base/java.net.Socket.<init>(Socket.java:555)
+	at java.base/java.net.Socket.<init>(Socket.java:324)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyConnection.start(IanProxyConnection.java:38)
+	at com.ussveritas.artemis.proxy.proxy.IanProxyServer.lambda$acceptLoop$0(IanProxyServer.java:82)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+13:31:53.850 [IanProxyAcceptor] INFO  c.u.a.proxy.proxy.IanProxyServer - Client connected from /192.168.1.236:52259
+13:31:53.851 [pool-1-thread-8] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connected to upstream 192.168.1.209:2010
+13:31:53.856 [pool-1-thread-8] INFO  c.u.a.proxy.proxy.IanProxyConnection - Proxy connection established
+13:35:42.753 [Thread-0] INFO  c.u.a.proxy.ArtemisProxyService - Stopping Artemis Proxy Service...
+13:35:42.758 [Thread-0] INFO  c.u.a.proxy.proxy.IanProxyServer - IAN Proxy server stopped
+13:35:42.758 [Thread-0] INFO  c.u.a.proxy.ArtemisProxyService - Service stopped

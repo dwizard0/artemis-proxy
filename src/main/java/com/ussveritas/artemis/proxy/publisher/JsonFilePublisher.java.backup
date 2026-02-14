@@ -1,0 +1,98 @@
+package com.ussveritas.artemis.proxy.publisher;
+
+import com.ussveritas.artemis.proxy.config.*;
+import com.ussveritas.artemis.proxy.aggregator.*;
+import com.ussveritas.artemis.proxy.model.*;
+import com.fasterxml.jackson.databind.*;
+import org.slf4j.*;
+
+import java.io.*;
+
+public class JsonFilePublisher {
+    private static final Logger log = LoggerFactory.getLogger(JsonFilePublisher.class);
+    
+    private final ConfigurationManager configManager;
+    private final SnapshotAggregator aggregator;
+    private final ObjectMapper mapper;
+    
+    public JsonFilePublisher(ConfigurationManager configManager, SnapshotAggregator aggregator) {
+        this.configManager = configManager;
+        this.aggregator = aggregator;
+        this.mapper = new ObjectMapper();
+        this.mapper.enable(SerializationFeature.INDENT_OUTPUT);
+    }
+    
+    public void publish() {
+        ProxyConfiguration config = configManager.get();
+        ShipSnapshot snapshot = aggregator.getCurrentSnapshot();
+        
+        try {
+            File outputFile = new File(config.jsonOutputFile());
+            mapper.writeValue(outputFile, buildCompatibleOutput(snapshot, config));
+        } catch (Exception e) {
+            log.error("Failed to write JSON file", e);
+        }
+    }
+    
+    private Object buildCompatibleOutput(ShipSnapshot snapshot, ProxyConfiguration config) {
+        // Build format compatible with existing ArtemisWeaponsBridge output
+        var output = new java.util.LinkedHashMap<String, Object>();
+        
+        output.put("connected", true);
+        output.put("ship_number", config.targetShip());
+        output.put("server_ip", config.upstreamHost());
+        output.put("server_port", config.upstreamPort());
+        
+        if (snapshot.weapons() != null && snapshot.weapons().tubes() != null) {
+            var tubes = new java.util.ArrayList<>();
+            for (TubeData tube : snapshot.weapons().tubes()) {
+                var tubeObj = new java.util.LinkedHashMap<String, Object>();
+                tubeObj.put("loaded", tube.loaded() != null ? tube.loaded() : false);
+                tubeObj.put("type", tube.type() != null ? ordinalFromType(tube.type()) : 0);
+                tubeObj.put("state", tube.loaded() ? "LOADED" : "UNLOADED");
+                tubeObj.put("countdown", tube.countdown() != null ? tube.countdown() : 0.0f);
+                tubes.add(tubeObj);
+            }
+            output.put("tubes", tubes);
+        }
+        
+        if (snapshot.shields() != null) {
+            output.put("shields_up", snapshot.shields().fore() != null && snapshot.shields().fore() > 0);
+            output.put("shields_front", snapshot.shields().fore() != null ? snapshot.shields().fore() : 100.0f);
+            output.put("shields_rear", snapshot.shields().aft() != null ? snapshot.shields().aft() : 100.0f);
+        } else {
+            output.put("shields_up", false);
+            output.put("shields_front", 100.0f);
+            output.put("shields_rear", 100.0f);
+        }
+        
+        if (snapshot.systems() != null && snapshot.systems().reactor() != null) {
+            output.put("energy", snapshot.systems().reactor());
+        } else {
+            output.put("energy", 1000.0f);
+        }
+        output.put("max_energy", 1000.0f);
+        
+        output.put("auto_beams", false);
+        
+        if (snapshot.weapons() != null && snapshot.weapons().beamFreq() != null && snapshot.weapons().beamFreq().frequency() != null) {
+            output.put("beam_frequency", snapshot.weapons().beamFreq().frequency());
+        } else {
+            output.put("beam_frequency", 0);
+        }
+        
+        output.put("selected_torp_type", 0);
+        output.put("forward_arc_active", false);
+        output.put("aft_arc_active", false);
+        
+        return output;
+    }
+    
+    private int ordinalFromType(String type) {
+        try {
+            return com.walkertribe.ian.enums.OrdnanceType.valueOf(type).ordinal();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+}

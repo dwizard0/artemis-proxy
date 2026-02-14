@@ -1,0 +1,5 @@
+# UDP Target IPs - one per line, lines starting with # are comments
+# The proxy will send game data to all IPs listed here
+
+192.168.1.209
+192.168.1.236

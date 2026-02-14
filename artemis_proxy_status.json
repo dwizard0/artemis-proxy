@@ -1,0 +1,304 @@
+{
+  "type" : "snapshot",
+  "ts_ms" : 1771112413920,
+  "server" : {
+    "host" : "192.168.1.209",
+    "port" : 2010,
+    "connected" : true
+  },
+  "targetShip" : 0,
+  "ghosts" : {
+    "engineering" : {
+      "connected" : false,
+      "ship" : 0
+    },
+    "weapons" : {
+      "connected" : false,
+      "ship" : 0
+    },
+    "communications" : {
+      "connected" : false,
+      "ship" : 0
+    }
+  },
+  "ship" : {
+    "identity" : {
+      "name" : "Artemis",
+      "shipType" : null,
+      "side" : 2,
+      "shipNumber" : 0
+    },
+    "position" : {
+      "x" : 63327.324,
+      "y" : 70.458084,
+      "z" : 68227.2,
+      "bearing" : 2.363519,
+      "velocity" : 0.0,
+      "pitch" : null,
+      "roll" : null,
+      "warpSpeed" : 0,
+      "impulseSpeed" : 0.0
+    },
+    "status" : {
+      "hull" : 4412.754,
+      "hullMax" : 5500.0,
+      "shieldsUp" : true,
+      "redAlert" : false,
+      "docked" : false
+    },
+    "shields" : {
+      "fore" : 4412.754,
+      "foreMax" : 5500.0,
+      "aft" : 5500.0,
+      "aftMax" : 5500.0,
+      "port" : null,
+      "portMax" : null,
+      "starboard" : null,
+      "starboardMax" : null
+    },
+    "weapons" : {
+      "tubes" : [ {
+        "idx" : 0,
+        "loaded" : false,
+        "type" : null,
+        "countdown" : 0.0
+      }, {
+        "idx" : 1,
+        "loaded" : false,
+        "type" : null,
+        "countdown" : 0.0
+      }, {
+        "idx" : 2,
+        "loaded" : true,
+        "type" : "TORPEDO",
+        "countdown" : 0.0
+      }, {
+        "idx" : 3,
+        "loaded" : true,
+        "type" : "TORPEDO",
+        "countdown" : 0.0
+      }, {
+        "idx" : 4,
+        "loaded" : false,
+        "type" : null,
+        "countdown" : 0.0
+      }, {
+        "idx" : 5,
+        "loaded" : false,
+        "type" : null,
+        "countdown" : 0.0
+      } ],
+      "tubeCount" : 6,
+      "torpedoCounts" : {
+        "homing" : 32,
+        "nuke" : 0,
+        "mine" : 0,
+        "emp" : 0,
+        "pshock" : 1,
+        "beacon" : null,
+        "probe" : 5,
+        "tag" : null
+      },
+      "beamFreq" : {
+        "frequency" : 0
+      },
+      "autoBeams" : false
+    },
+    "systems" : {
+      "reactor" : {
+        "energy" : 996.11566,
+        "energyMax" : 1000.0,
+        "coolantAvailable" : 3
+      },
+      "beams" : {
+        "power" : 0.66565347,
+        "heat" : 0.0,
+        "coolant" : 5,
+        "damage" : 0.0
+      },
+      "torpedoes" : {
+        "power" : 0.334,
+        "heat" : 0.02307177,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "sensors" : {
+        "power" : 0.334,
+        "heat" : 0.022562373,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "maneuvering" : {
+        "power" : 0.334,
+        "heat" : 0.017234538,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "impulse" : {
+        "power" : 0.334,
+        "heat" : 0.016276617,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "warp" : {
+        "power" : 0.334,
+        "heat" : 0.012059681,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "foreShields" : {
+        "power" : 0.334,
+        "heat" : 0.007948469,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "aftShields" : {
+        "power" : 0.334,
+        "heat" : 0.0063650166,
+        "coolant" : 0,
+        "damage" : 0.0
+      },
+      "portShields" : null,
+      "starboardShields" : null
+    },
+    "tactical" : {
+      "mainScreenView" : null,
+      "targetId" : 0,
+      "scanningId" : 0,
+      "scanLevel" : 0.0
+    }
+  },
+  "objects" : [ {
+    "id" : 10050,
+    "name" : null,
+    "type" : "ANOMALY",
+    "side" : null,
+    "x" : 35966.71,
+    "y" : 70.458084,
+    "z" : 57863.246,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9990,
+    "name" : null,
+    "type" : "ANOMALY",
+    "side" : null,
+    "x" : 35966.71,
+    "y" : 70.458084,
+    "z" : 57863.246,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9959,
+    "name" : null,
+    "type" : "ANOMALY",
+    "side" : null,
+    "x" : 35966.71,
+    "y" : 70.458084,
+    "z" : 57863.246,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9960,
+    "name" : null,
+    "type" : "ANOMALY",
+    "side" : null,
+    "x" : 35966.71,
+    "y" : 70.458084,
+    "z" : 57863.246,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9364,
+    "name" : "DS1",
+    "type" : "BASE",
+    "side" : null,
+    "x" : 50147.637,
+    "y" : 0.0,
+    "z" : 50201.75,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9972,
+    "name" : null,
+    "type" : "ANOMALY",
+    "side" : null,
+    "x" : 35966.71,
+    "y" : 70.458084,
+    "z" : 57863.246,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9365,
+    "name" : "DS2",
+    "type" : "BASE",
+    "side" : null,
+    "x" : 52589.3,
+    "y" : 0.0,
+    "z" : 62484.312,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9366,
+    "name" : "DS3",
+    "type" : "BASE",
+    "side" : null,
+    "x" : 36493.27,
+    "y" : 0.0,
+    "z" : 60184.266,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9367,
+    "name" : "DS4",
+    "type" : "BASE",
+    "side" : null,
+    "x" : 34969.688,
+    "y" : 0.0,
+    "z" : 38377.19,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9368,
+    "name" : "DS5",
+    "type" : "BASE",
+    "side" : null,
+    "x" : 35738.523,
+    "y" : 0.0,
+    "z" : 35623.883,
+    "shields" : null,
+    "shieldsMax" : null,
+    "bearing" : null,
+    "velocity" : null
+  }, {
+    "id" : 9369,
+    "name" : "Artemis",
+    "type" : "PLAYER_SHIP",
+    "side" : 2,
+    "x" : 63327.324,
+    "y" : 70.458084,
+    "z" : 68227.2,
+    "shields" : 4412.754,
+    "shieldsMax" : null,
+    "bearing" : 2.363519,
+    "velocity" : 0.0
+  } ]
+}

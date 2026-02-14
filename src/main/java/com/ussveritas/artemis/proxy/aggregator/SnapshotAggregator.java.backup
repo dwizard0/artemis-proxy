@@ -1,0 +1,119 @@
+package com.ussveritas.artemis.proxy.aggregator;
+
+import com.ussveritas.artemis.proxy.model.*;
+import com.ussveritas.artemis.proxy.observer.*;
+import com.walkertribe.ian.world.*;
+import com.walkertribe.ian.enums.*;
+import org.slf4j.*;
+
+import java.util.*;
+import java.util.concurrent.locks.*;
+
+public class SnapshotAggregator {
+    private static final Logger log = LoggerFactory.getLogger(SnapshotAggregator.class);
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+    
+    private final Map<GhostType, World> worlds = new EnumMap<>(GhostType.class);
+    private volatile ShipSnapshot currentSnapshot;
+    private volatile int targetShip = 0;
+    
+    public SnapshotAggregator() {
+        this.currentSnapshot = ShipSnapshot.createEmpty();
+        for (GhostType type : GhostType.values()) {
+            worlds.put(type, new World());
+        }
+    }
+    
+    public World getWorldFor(GhostType ghost) {
+        return worlds.get(ghost);
+    }
+    
+    public void setTargetShip(int ship) {
+        this.targetShip = ship;
+    }
+    
+    public void updateSnapshot() {
+        lock.writeLock().lock();
+        try {
+            currentSnapshot = buildSnapshot(targetShip);
+        } finally {
+            lock.writeLock().unlock();
+        }
+    }
+    
+    private ShipSnapshot buildSnapshot(int shipNumber) {
+        ArtemisPlayer player = null;
+        
+        // Try to get player from any world that has data
+        for (World world : worlds.values()) {
+            player = world.getPlayer((byte) shipNumber);
+            if (player != null) break;
+        }
+        
+        if (player == null) {
+            return ShipSnapshot.createEmpty();
+        }
+        
+        return new ShipSnapshot(
+            player.getName() != null ? player.getName().toString() : null,
+            player.getShieldsFront(),
+            buildShieldData(player),
+            buildWeaponData(player),
+            buildSystemPowerData(player)
+        );
+    }
+    
+    private ShieldData buildShieldData(ArtemisPlayer player) {
+        return new ShieldData(
+            player.getShieldsFront(),
+            player.getShieldsRear(),
+            null, // Port/starboard not available in IAN 3.5.1
+            null
+        );
+    }
+    
+    private WeaponData buildWeaponData(ArtemisPlayer player) {
+        List<TubeData> tubes = new ArrayList<>();
+        
+        for (int i = 0; i < 6; i++) {
+            TubeState state = player.getTubeState(i);
+            OrdnanceType contents = player.getTubeContents(i);
+            float countdown = player.getTubeCountdown(i);
+            
+            tubes.add(new TubeData(
+                i,
+                state == TubeState.LOADED,
+                contents != null ? contents.name() : null,
+                Float.isNaN(countdown) ? null : countdown
+            ));
+        }
+        
+        // Fully qualify to avoid ambiguity
+        com.walkertribe.ian.enums.BeamFrequency freq = player.getBeamFrequency();
+        
+        return new WeaponData(
+            tubes,
+            new com.ussveritas.artemis.proxy.model.BeamFrequency(freq != null ? freq.ordinal() : null)
+        );
+    }
+    
+    private SystemPowerData buildSystemPowerData(ArtemisPlayer player) {
+        Float energy = player.getEnergy();
+        
+        return new SystemPowerData(
+            energy,           // Reactor energy
+            player.getImpulse(), // Engine impulse
+            null,             // Weapons power not directly available
+            null              // Sensors power not directly available
+        );
+    }
+    
+    public ShipSnapshot getCurrentSnapshot() {
+        lock.readLock().lock();
+        try {
+            return currentSnapshot;
+        } finally {
+            lock.readLock().unlock();
+        }
+    }
+}
