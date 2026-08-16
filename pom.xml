@@ -24,7 +24,11 @@
         <dependency>
             <groupId>com.walkertribe.ian</groupId>
             <artifactId>ian</artifactId>
-            <version>3.5.1</version>
+            <!-- Locally patched IAN. Stock 3.5.1's EventDispatchThread busy-spins,
+                 pinning one core per connected client for the life of the connection.
+                 Patch source of truth:
+                 ../artemis-bridge-middleware/third-party/ian/ -->
+            <version>3.5.1-veritas1</version>
         </dependency>
         
         <!-- Jackson for JSON -->
